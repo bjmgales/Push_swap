@@ -6,36 +6,56 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/27 14:12:15 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:32:59 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+int	get_position(t_lst *sa, int content)
+{
+	int i;
+	i = 0;
+	while (sa->content != content)
+	{
+		sa = sa->next;
+		i++;
+	}
+	return (i);
+}
 void	sorting(t_lst **sa, t_lst **sb)
 {
 	t_lst	*a_ptr;
 	t_lst	*tmp_ptr;
-	int		i;
+	t_lst	*b_ptr;
+	int		position;
+	int		tmp;
 
-	i = ft_listsize(*sa) / 2; // 7\2 = 3
 	a_ptr = *sa;
 	tmp_ptr = *sa;
-	while (a_ptr->next != NULL && i >= 0)
+	b_ptr = *sb;
+	tmp = 0;
+	while (tmp_ptr->next != NULL)
 	{
-		while (a_ptr->content <= tmp_ptr->content && tmp_ptr->next != NULL)
-			tmp_ptr = tmp_ptr->next;
-		if (tmp_ptr->next == NULL)
+		tmp_ptr = tmp_ptr->next;
+		if (a_ptr->content > tmp_ptr->content)
 		{
-			push_out(&a_ptr, sb, 'b');
-			i--;
+				a_ptr = tmp_ptr;
+			printf("!%d\n", a_ptr->content);
+		}
+	}
+	position = get_position(*sa, a_ptr->content);
+	tmp_ptr = *sa;
+	tmp = a_ptr->content;
+	while (tmp_ptr->content != tmp)
+	{
+		if (position > ft_listsize(*sa) / 2)
+		{
 			tmp_ptr = *sa;
-			a_ptr = a_ptr->next;
-			break;
+			sa = rev_rotate(sa, 'a');
 		}
 		else
-			a_ptr = tmp_ptr;
-		printf("%d\n", tmp_ptr->content);
+			rotate(sa, 'a');
 	}
+	push_out(&(*sa)->next, sb, 'b');
 	print_list(*sa);
 }

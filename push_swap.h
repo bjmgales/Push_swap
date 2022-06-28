@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2022/06/27 12:30:48 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:31:10 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_lst
 } t_lst;
 
 int		ft_listsize(t_lst *lst);
+void	sorting(t_lst **sa, t_lst **sb);
 void	ft_lstdelone(t_lst *lst);
 void	ft_lstclear(t_lst **lst);
 void	print_list(t_lst *lst);
