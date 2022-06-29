@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/28 16:06:57 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/29 13:13:54 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 }
 int main(int argc, char **argv)
 {
-	t_lst **stack_a=NULL;
-	t_lst **stack_b=NULL;
+	t_lst *stack_a;
+	t_lst *stack_b;
 
 	if (argc < 2 || argc > 501 || argc == 3)
 		print_and_exit("Error\n Argument number is invalid\n");
@@ -60,12 +60,9 @@ int main(int argc, char **argv)
 	if (argc == 2)
 		argv = get_quote(argv[0]);
 	stack_a = malloc(sizeof(t_lst));
-	*stack_a = malloc(sizeof(t_lst));
 	stack_b = malloc(sizeof(t_lst));
-	*stack_b = malloc(sizeof(t_lst));
-	stack_ini(stack_a, stack_b, argv);
-	print_list(*stack_a);
-	num_parse(stack_a);
-	sorting(stack_a, stack_b);
+	stack_ini(&stack_a, &stack_b, argv);
+	num_parse(&stack_a);
+	sort(&stack_a, &stack_b);
 	return 0;
 }

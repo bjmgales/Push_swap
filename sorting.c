@@ -6,11 +6,24 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/28 16:32:59 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/29 13:30:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
+{
+	*tmp_ptr = sa;
+	*a_ptr = sa;
+	while ((*tmp_ptr)->next != NULL)
+	{
+		*tmp_ptr = (*tmp_ptr)->next;
+		if ((*a_ptr)->content > (*tmp_ptr)->content)
+			*a_ptr = *tmp_ptr;
+	}
+	return;
+}
 int	get_position(t_lst *sa, int content)
 {
 	int i;
@@ -22,31 +35,19 @@ int	get_position(t_lst *sa, int content)
 	}
 	return (i);
 }
+
 void	sorting(t_lst **sa, t_lst **sb)
 {
 	t_lst	*a_ptr;
 	t_lst	*tmp_ptr;
-	t_lst	*b_ptr;
 	int		position;
 	int		tmp;
 
-	a_ptr = *sa;
-	tmp_ptr = *sa;
-	b_ptr = *sb;
-	tmp = 0;
-	while (tmp_ptr->next != NULL)
-	{
-		tmp_ptr = tmp_ptr->next;
-		if (a_ptr->content > tmp_ptr->content)
-		{
-				a_ptr = tmp_ptr;
-			printf("!%d\n", a_ptr->content);
-		}
-	}
+	find_smallest(*sa, &tmp_ptr, &a_ptr);
 	position = get_position(*sa, a_ptr->content);
-	tmp_ptr = *sa;
 	tmp = a_ptr->content;
-	while (tmp_ptr->content != tmp)
+	tmp_ptr = *sa;
+	while ((*sa)->content != tmp)
 	{
 		if (position > ft_listsize(*sa) / 2)
 		{
@@ -55,7 +56,20 @@ void	sorting(t_lst **sa, t_lst **sb)
 		}
 		else
 			rotate(sa, 'a');
+		if (tmp_ptr->content == tmp)
+			break;
 	}
-	push_out(&(*sa)->next, sb, 'b');
-	print_list(*sa);
+	push_out(sa, sb, 'b');
+	return;
+}
+
+void	sort(t_lst **sa, t_lst **sb)
+{
+	int	tmp;
+	tmp = ft_listsize(*sa) / 2;
+	sorting(sa, sb);
+	print_list(sa);
+	printf("\n");
+	print_list(sb);
+	return;
 }
