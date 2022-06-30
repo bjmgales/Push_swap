@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/29 14:01:44 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/30 15:40:11 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	swap(t_lst **in, int mode)
 	tmp->next->content = (*in)->next->content;
 	(*in)->next->content = tmp->content;
 	(*in)->content = tmp->next->content;
-	free (tmp);
+	free(tmp);
 	return ;
 }
 
@@ -69,70 +69,27 @@ void rotate(t_lst **in, int mode)
 	return ;
 }
 
-/*void	rev_rot(t_lst **ret, t_lst **in, int first, int last)
-{
-	t_lst	*ret_ptr;
-	t_lst	*in_ptr;
-
-	ret_ptr = *ret;
-	ret_ptr->content = last;
-	ret_ptr = ret_ptr->next;
-	ret_ptr->content = first;
-	in_ptr = *in;
-	in_ptr = in_ptr->next;
-	while (in_ptr->next->next != NULL)
-	{
-		ret_ptr = ret_ptr->next;
-		ret_ptr->content = in_ptr->content;
-		in_ptr = in_ptr->next;
-	}
-	return;
-}
-
-t_lst	**rev_rotate(t_lst **in, int mode)
-{
-	t_lst 	**ret=NULL;
-	t_lst	*in_ptr;
-	t_lst	*ret_ptr;
-	int first;
-	int last;
-
-	if (mode == 'a')
-		ft_printf("rra\n");
-	if (mode == 'b')
-		ft_printf("rrb\n");
-	ret = malloc(sizeof(t_lst));
-	*ret = malloc(sizeof(t_lst));
-	ret_ptr = (*ret);
-	in_ptr = *in;
-	first = in_ptr->content;
-	while (in_ptr->next->next != NULL)
-	{
-		in_ptr = in_ptr->next;
-		ret_ptr->next = malloc(sizeof(t_lst));
-		ret_ptr = ret_ptr->next;
-	}
-	ret_ptr->next = malloc(sizeof(t_lst));
-	ret_ptr->next->next = NULL;
-	ret_ptr = *ret;
-	last = in_ptr->content;
-	rev_rot(ret, in, first, last);
-	return (ret);
-}*/
-t_lst	**rev_rotate(t_lst **in, int mode)
+void	rev_rotate(t_lst **in, int mode)
 {
 	t_lst	*in_ptr;
 	t_lst	*f_ptr;
 	int last;
+
 	f_ptr = *in;
 	in_ptr = *in;
-
-	while(in_ptr->next != NULL)
-	{
+	f_ptr->next = in_ptr;
+	while(in_ptr->next->next != NULL)
 		in_ptr = in_ptr->next;
-		if (in_ptr->next->next == NULL)
-			last = in_ptr->next->content;
-		
-	}
-
+	last = in_ptr->content;
+	in_ptr->next = NULL;
+	in_ptr = f_ptr;
+	*in = in_ptr;
+	free_lst(&f_ptr);
+	(*in)->content = last;
+	if (mode == 'a')
+		ft_printf("rra\n");
+	if (mode == 'b')
+		ft_printf("rrb\n");
+	printf("lol\n");
+	return ;
 }

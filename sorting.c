@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/29 13:30:28 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/30 14:57:29 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 	*a_ptr = sa;
 	while ((*tmp_ptr)->next != NULL)
 	{
-		*tmp_ptr = (*tmp_ptr)->next;
 		if ((*a_ptr)->content > (*tmp_ptr)->content)
 			*a_ptr = *tmp_ptr;
+		*tmp_ptr = (*tmp_ptr)->next;
 	}
 	return;
 }
@@ -46,30 +46,29 @@ void	sorting(t_lst **sa, t_lst **sb)
 	find_smallest(*sa, &tmp_ptr, &a_ptr);
 	position = get_position(*sa, a_ptr->content);
 	tmp = a_ptr->content;
+
 	tmp_ptr = *sa;
 	while ((*sa)->content != tmp)
 	{
 		if (position > ft_listsize(*sa) / 2)
-		{
-			tmp_ptr = *sa;
-			sa = rev_rotate(sa, 'a');
-		}
+			rev_rotate(sa, 'a');
 		else
 			rotate(sa, 'a');
-		if (tmp_ptr->content == tmp)
-			break;
 	}
-	push_out(sa, sb, 'b');
+		push_out(sa, sb, 'b');
 	return;
 }
 
 void	sort(t_lst **sa, t_lst **sb)
 {
 	int	tmp;
-	tmp = ft_listsize(*sa) / 2;
-	sorting(sa, sb);
-	print_list(sa);
-	printf("\n");
-	print_list(sb);
+	tmp = ft_listsize(*sa);
+	while (ft_listsize(*sb) != tmp)
+	{
+		sorting(sa, sb);
+		printf("lol\n");
+	}
+	while(ft_listsize(*sa) != tmp)
+		push_out(sb, sa, 'a');
 	return;
 }

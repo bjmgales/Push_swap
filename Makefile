@@ -1,6 +1,6 @@
 NAME= push_swap
 CC= gcc
-CFLAGS= -Wall -Wextra
+CFLAGS= -Wall -Wextra -Werror
 RM=rm -f
 SRCS=./ft_printf/ft_printf.c \
 ./ft_printf/ft_printf_util.c \

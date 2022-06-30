@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/29 13:13:54 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/30 15:35:11 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,29 @@
 
 void	print_and_exit(char *str)
 {
-	ft_printf("%s", str);
+	int	i;
+
+	i = -1;
+
+	while (str[++i])
+		write(2, &str[i], 1);
+	write(2, "\n", 1);
 	exit (0);
 }
 
 void	free_lst(t_lst **stack)
 {
-	if (*stack)
+	t_lst	*ptr;
+
+	ptr = *stack;
+
+
+	while((*stack)!= NULL)
 	{
-		free_lst(&(*stack)->next);
-		free(*stack);
+		ptr = *stack;
+		*stack=(*stack)->next;
 	}
-	free (stack);
+		free (ptr);
 }
 void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 {
@@ -53,8 +64,8 @@ int main(int argc, char **argv)
 	t_lst *stack_a;
 	t_lst *stack_b;
 
-	if (argc < 2 || argc > 501 || argc == 3)
-		print_and_exit("Error\n Argument number is invalid\n");
+	if (argc == 0 || argc == 3)
+		print_and_exit("Error");
 	parsing(argc, argv);
 	argv++;
 	if (argc == 2)
@@ -64,5 +75,6 @@ int main(int argc, char **argv)
 	stack_ini(&stack_a, &stack_b, argv);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b);
+	system("leaks push_swap");
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:35:20 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/27 11:45:52 by bgales           ###   ########.fr       */
+/*   Updated: 2022/06/30 12:11:59 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char **get_quote(char *argv)
 	while (strs[i])
 		i++;
 	if (i < 3)
-		print_and_exit("Error\nNot enough numbers.\n");
+		print_and_exit("Error");
 	return (strs);
 }
 
@@ -35,11 +35,11 @@ void	parse(char *argv)
 	while (argv[++i])
 	{
 		if ((argv[i] < 48 || argv[i] > 57) && (argv[i] != 43 && argv[i] != 45 && argv[i] != 32))
-			print_and_exit("Error\nWrong characters.\n");
+			print_and_exit("Error");
 		if ((argv[i] == 43 || argv[i] == 45) && (argv[i + 1] < 48 || argv[i + 1] > 57))
-			print_and_exit("Error\nSign followed by wrong character.\n");
+			print_and_exit("Error");
 		if (i > 0 && (argv[i] == 43 || argv[i] == 45) && (argv[i - 1] != 32))
-			print_and_exit("Error\nSign preceded by wrong character.\n");
+			print_and_exit("Error");
 	}
 	return;
 
@@ -77,7 +77,7 @@ void	already_sorted(t_lst **sa)
 	}
 	tmp = tmp->next;
 	if (tmp->next == NULL)
-		print_and_exit("Error\nStack is already sorted.\n");
+		print_and_exit("Error");
 }
 
 void	num_parse(t_lst **sa)
@@ -91,7 +91,7 @@ void	num_parse(t_lst **sa)
 	while(ptr->next != NULL)
 	{
 			if (tmp->content == ptr->content)
-			print_and_exit("Error\nA number is appearing twice.\n");
+			print_and_exit("Error");
 			ptr = ptr->next;
 		if (ptr->next == NULL)
 		{
