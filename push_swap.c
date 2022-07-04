@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 15:35:11 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/04 16:32:46 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,16 @@ void	print_and_exit(char *str)
 	exit (0);
 }
 
-void	free_lst(t_lst **stack)
+void	free_lst(t_lst *stack)
 {
 	t_lst	*ptr;
 
-	ptr = *stack;
-
-
-	while((*stack)!= NULL)
+	while(stack->next != NULL)
 	{
-		ptr = *stack;
-		*stack=(*stack)->next;
-	}
+		ptr = stack;
+		stack = stack->next;
 		free (ptr);
+	}
 }
 void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 {
@@ -64,8 +61,8 @@ int main(int argc, char **argv)
 	t_lst *stack_a;
 	t_lst *stack_b;
 
-	if (argc == 0 || argc == 3)
-		print_and_exit("Error");
+	if (argc == 1)
+		return 1;
 	parsing(argc, argv);
 	argv++;
 	if (argc == 2)
@@ -73,8 +70,9 @@ int main(int argc, char **argv)
 	stack_a = malloc(sizeof(t_lst));
 	stack_b = malloc(sizeof(t_lst));
 	stack_ini(&stack_a, &stack_b, argv);
+	if(stack_a->next == NULL)
+		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b);
-	system("leaks push_swap");
-	return 0;
+	exit (0);
 }

@@ -22,7 +22,6 @@ SRCS=./ft_printf/ft_printf.c \
 ./stack_op_both.c \
 ./parsing.c \
 ./sorting.c \
-./ft_lstclear.c \
 
 
 OBJS=${SRCS:.c=.o}

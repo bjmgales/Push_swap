@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2022/06/30 11:03:10 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/01 10:59:06 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ void	print_and_exit(char *str);
 void	push_out(t_lst **in, t_lst **out, int mode);
 void	swap(t_lst **in, int mode);
 char	**get_quote(char *argv);
-void	free_lst(t_lst **stack);
+void	free_lst(t_lst *stack);
 void	rev_rotate(t_lst **in, int mode);
 void	sorting(t_lst **sa, t_lst **sb);
-void	rev_rot(t_lst **ret, t_lst **in, int first, int last);
 void	rotate(t_lst **in, int mode);
 void	swap_both(t_lst **sa, t_lst **out);
 void	rev_rotate_both(t_lst **sa, t_lst **sb);

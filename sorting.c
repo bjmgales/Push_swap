@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 14:57:29 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/04 16:19:34 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ void	sorting(t_lst **sa, t_lst **sb)
 void	sort(t_lst **sa, t_lst **sb)
 {
 	int	tmp;
+
 	tmp = ft_listsize(*sa);
 	while (ft_listsize(*sb) != tmp)
-	{
 		sorting(sa, sb);
-		printf("lol\n");
-	}
 	while(ft_listsize(*sa) != tmp)
 		push_out(sb, sa, 'a');
 	return;

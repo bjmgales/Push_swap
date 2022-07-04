@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:35:20 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 12:11:59 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:02:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ char **get_quote(char *argv)
 
 	while (strs[i])
 		i++;
-	if (i < 3)
-		print_and_exit("Error");
+	if (!strs[0])
+		exit(0);
+	// if (i < 3)
+	// 	print_and_exit("Error");
 	return (strs);
 }
 
@@ -49,6 +51,11 @@ void	parsing(int argc, char **argv)
 {
 	int i;
 
+	i = -1;
+	while (argv[++i])
+		if (ft_atoi(argv[i]) > INT32_MAX || ft_atoi(argv[i]) < INT32_MIN
+		|| ft_strlen(argv[i]) > 11)
+			print_and_exit("Error");
 	i = 0;
 	if (argc == 2)
 		parse(argv[1]);
@@ -77,7 +84,7 @@ void	already_sorted(t_lst **sa)
 	}
 	tmp = tmp->next;
 	if (tmp->next == NULL)
-		print_and_exit("Error");
+		exit(0);
 }
 
 void	num_parse(t_lst **sa)
@@ -90,7 +97,7 @@ void	num_parse(t_lst **sa)
 	ptr = ptr->next;
 	while(ptr->next != NULL)
 	{
-			if (tmp->content == ptr->content)
+		if (tmp->content == ptr->content)
 			print_and_exit("Error");
 			ptr = ptr->next;
 		if (ptr->next == NULL)

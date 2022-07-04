@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 12:18:24 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 10:52:12 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/01 12:05:10 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,8 @@
 
 void	swap_both(t_lst **sa, t_lst **sb)
 {
-	t_lst	*tmp = malloc(sizeof(t_lst));
-
-	tmp->next = malloc(sizeof(t_lst));
-	ft_printf("ss\n");
-	tmp->content = (*sa)->content;
-	tmp->next->content = (*sa)->next->content;
-	(*sa)->next->content = tmp->content;
-	(*sa)->content = tmp->next->content;
-	tmp->content = (*sb)->content;
-	tmp->next->content = (*sb)->next->content;
-	(*sb)->next->content = tmp->content;
-	(*sb)->content = tmp->next->content;
-	free (tmp);
+	swap(sa, 'c');
+	swap(sb, 'c');
 	return ;
 }
 

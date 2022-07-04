@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 11:03:00 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/01 11:47:46 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	stack_init(t_lst **sa, t_lst **sb, t_lst **first_a, t_lst **first_b, char *
 
 void	print_list(t_lst *lst)
 {
-
+	int i = 0;
 	while (lst->next != NULL)
 	{
-		printf("~~~%d\n", lst->content);
+		printf("%d Element in list : %d\n",i++, lst->content);
 		lst= lst->next;
 	}
 	return ;

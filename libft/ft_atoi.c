@@ -6,12 +6,13 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:27:38 by bgales            #+#    #+#             */
-/*   Updated: 2021/11/19 13:36:53 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/04 15:50:01 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "../push_swap.h"
 
 int	ft_atoi(const char *str)
 {
@@ -35,5 +36,7 @@ int	ft_atoi(const char *str)
 		resultat = (resultat * 10) + (str[i] - 48);
 		i++;
 	}
+	if (resultat * signe > INT32_MAX || resultat * signe < INT32_MIN)
+		print_and_exit("Error");
 	return (resultat * signe);
 }

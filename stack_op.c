@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/06/30 15:40:11 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:08:00 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 
 void push_out(t_lst **in, t_lst **out, int mode)
 {
-	t_lst	*tmp=malloc(sizeof(t_lst));
+	t_lst	*tmp;
+
+	tmp = *in;
+	*in = (*in)->next;
 	tmp->next = *out;
 	*out = tmp;
-	tmp->content = (*in)->content;
-	*in = (*in)->next;
 	if (mode == 'b')
 		ft_printf("pb\n");
 	if (mode == 'a')
 		ft_printf("pa\n");
-	tmp=NULL;
-	free(tmp);
 	return ;
 }
 
@@ -42,6 +41,7 @@ void	swap(t_lst **in, int mode)
 	tmp->next->content = (*in)->next->content;
 	(*in)->next->content = tmp->content;
 	(*in)->content = tmp->next->content;
+	free(tmp->next);
 	free(tmp);
 	return ;
 }
@@ -73,23 +73,18 @@ void	rev_rotate(t_lst **in, int mode)
 {
 	t_lst	*in_ptr;
 	t_lst	*f_ptr;
-	int last;
 
-	f_ptr = *in;
 	in_ptr = *in;
-	f_ptr->next = in_ptr;
 	while(in_ptr->next->next != NULL)
 		in_ptr = in_ptr->next;
-	last = in_ptr->content;
+	f_ptr = in_ptr->next;
+	f_ptr->next = *in;
+	*in = f_ptr;
 	in_ptr->next = NULL;
-	in_ptr = f_ptr;
-	*in = in_ptr;
-	free_lst(&f_ptr);
-	(*in)->content = last;
+
 	if (mode == 'a')
 		ft_printf("rra\n");
 	if (mode == 'b')
 		ft_printf("rrb\n");
-	printf("lol\n");
 	return ;
 }
