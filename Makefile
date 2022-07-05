@@ -1,6 +1,6 @@
 NAME= push_swap
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS=
 RM=rm -f
 SRCS=./ft_printf/ft_printf.c \
 ./ft_printf/ft_printf_util.c \
@@ -22,6 +22,7 @@ SRCS=./ft_printf/ft_printf.c \
 ./stack_op_both.c \
 ./parsing.c \
 ./sorting.c \
+./three.c \
 
 
 OBJS=${SRCS:.c=.o}

@@ -6,12 +6,24 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/04 16:19:34 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/05 12:46:32 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
+{
+	*tmp_ptr = sa;
+	*a_ptr = sa;
+	while ((*tmp_ptr)->next != NULL)
+	{
+		if ((*a_ptr)->content < (*tmp_ptr)->content)
+			*a_ptr = *tmp_ptr;
+		*tmp_ptr = (*tmp_ptr)->next;
+	}
+	return;
+}
 void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 {
 	*tmp_ptr = sa;
@@ -56,6 +68,7 @@ void	sorting(t_lst **sa, t_lst **sb)
 			rotate(sa, 'a');
 	}
 		push_out(sa, sb, 'b');
+		print_list(*sb);
 	return;
 }
 
@@ -64,9 +77,21 @@ void	sort(t_lst **sa, t_lst **sb)
 	int	tmp;
 
 	tmp = ft_listsize(*sa);
+	if(tmp == 2)
+	{
+		swap(sa, 'a');
+		exit (0);
+	}
+
+	if (tmp == 3)
+	{
+		three_sort(sa);
+		exit(0);
+	}
 	while (ft_listsize(*sb) != tmp)
 		sorting(sa, sb);
 	while(ft_listsize(*sa) != tmp)
 		push_out(sb, sa, 'a');
+		print_list(*sa);
 	return;
 }

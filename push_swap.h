@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2022/07/01 10:59:06 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/05 12:27:25 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct s_lst
 	struct s_lst	*next;
 } t_lst;
 
+void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr);
+int		get_position(t_lst *sa, int content);
+void 	three_sort(t_lst **sa);
+void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr);
 int		ft_listsize(t_lst *lst);
 void	sort(t_lst **sa, t_lst **sb);
 void	ft_lstdelone(t_lst *lst);

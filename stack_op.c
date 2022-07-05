@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/04 17:08:00 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/05 12:48:23 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void push_out(t_lst **in, t_lst **out, int mode)
 	tmp->next = *out;
 	*out = tmp;
 	if (mode == 'b')
-		ft_printf("pb\n");
+		printf("pb\n");
 	if (mode == 'a')
-		ft_printf("pa\n");
+		printf("pa\n");
 	return ;
 }
 
@@ -34,9 +34,9 @@ void	swap(t_lst **in, int mode)
 
 	tmp->next = malloc(sizeof(t_lst));
 	if (mode == 'a')
-		ft_printf("sa\n");
+		printf("sa\n");
 	if (mode == 'b')
-		ft_printf("sb\n");
+		printf("sb\n");
 	tmp->content = (*in)->content;
 	tmp->next->content = (*in)->next->content;
 	(*in)->next->content = tmp->content;
@@ -63,9 +63,9 @@ void rotate(t_lst **in, int mode)
 		i = i->next;
 	}
 	if (mode == 'a')
-		ft_printf("ra\n");
+		printf("ra\n");
 	if (mode == 'b')
-		ft_printf("rb\n");
+		printf("rb\n");
 	return ;
 }
 
@@ -75,16 +75,18 @@ void	rev_rotate(t_lst **in, int mode)
 	t_lst	*f_ptr;
 
 	in_ptr = *in;
-	while(in_ptr->next->next != NULL)
+	printf("first : %d\n", (*in)->content);
+	while(in_ptr->next != NULL)
 		in_ptr = in_ptr->next;
-	f_ptr = in_ptr->next;
+	f_ptr = in_ptr;
+	printf("last : %d\n", f_ptr->content);
 	f_ptr->next = *in;
 	*in = f_ptr;
-	in_ptr->next = NULL;
+	in_ptr = NULL;
 
 	if (mode == 'a')
-		ft_printf("rra\n");
+		printf("rra\n");
 	if (mode == 'b')
-		ft_printf("rrb\n");
+		printf("rrb\n");
 	return ;
 }

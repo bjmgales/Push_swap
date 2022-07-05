@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/04 16:32:46 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/05 11:20:13 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,13 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 int main(int argc, char **argv)
 {
 	t_lst *stack_a;
-	t_lst *stack_b;
+	t_lst *stack_b; // 3 element : 3 ou moins
+					// 5 element : 12 ou moins
+					// 100 elememt : 1100 ou moins
+					// 500 element : 8000 ou moins
 
 	if (argc == 1)
-		return 1;
+		exit (0);
 	parsing(argc, argv);
 	argv++;
 	if (argc == 2)

@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:35:20 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/04 17:02:28 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/05 11:22:06 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char **get_quote(char *argv)
 		i++;
 	if (!strs[0])
 		exit(0);
-	// if (i < 3)
-	// 	print_and_exit("Error");
+	if (i < 1)
+		exit (0);
 	return (strs);
 }
 
@@ -53,8 +53,7 @@ void	parsing(int argc, char **argv)
 
 	i = -1;
 	while (argv[++i])
-		if (ft_atoi(argv[i]) > INT32_MAX || ft_atoi(argv[i]) < INT32_MIN
-		|| ft_strlen(argv[i]) > 11)
+		if (ft_atoi(argv[i]) > INT32_MAX || ft_atoi(argv[i]) < INT32_MIN)
 			print_and_exit("Error");
 	i = 0;
 	if (argc == 2)
