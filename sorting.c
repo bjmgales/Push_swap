@@ -68,7 +68,6 @@ void	sorting(t_lst **sa, t_lst **sb)
 			rotate(sa, 'a');
 	}
 		push_out(sa, sb, 'b');
-		print_list(*sb);
 	return;
 }
 
@@ -80,18 +79,17 @@ void	sort(t_lst **sa, t_lst **sb)
 	if(tmp == 2)
 	{
 		swap(sa, 'a');
-		exit (0);
+		return;
 	}
 
 	if (tmp == 3)
 	{
 		three_sort(sa);
-		exit(0);
+		return ;
 	}
 	while (ft_listsize(*sb) != tmp)
 		sorting(sa, sb);
 	while(ft_listsize(*sa) != tmp)
 		push_out(sb, sa, 'a');
-		print_list(*sa);
 	return;
 }

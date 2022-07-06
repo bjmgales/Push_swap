@@ -17,7 +17,6 @@ void final_three(t_lst **sa, int big, int small)
 	//if (big == 2 && small == 1)
 	//{
 		rev_rotate(sa, 'a');
-		print_list(*sa);
 		swap(sa, 'a');
 	//}
 }

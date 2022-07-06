@@ -53,7 +53,7 @@ void	stack_init(t_lst **sa, t_lst **sb, t_lst **first_a, t_lst **first_b, char *
 void	print_list(t_lst *lst)
 {
 	int i = 0;
-	while (lst->next != NULL)
+	while (lst != NULL)
 	{
 		printf("%d Element in list : %d\n",i++, lst->content);
 		lst= lst->next;

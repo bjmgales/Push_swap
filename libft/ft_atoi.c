@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 		resultat = (resultat * 10) + (str[i] - 48);
 		i++;
 	}
-	if (resultat * signe > INT32_MAX || resultat * signe < INT32_MIN)
+	if (resultat * signe > __INT32_MAX__ || resultat * signe < -2147483648)
 		print_and_exit("Error");
 	return (resultat * signe);
 }

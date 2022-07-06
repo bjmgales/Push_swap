@@ -42,18 +42,19 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 	t_lst *temp;
 
 	i = 0;
-	tmp = *sa;
-	temp = *sb;
+	
+	
 
 	while (argv[i])
 	{
+		tmp = malloc(sizeof(t_lst));
 		tmp->content = ft_atoi(argv[i]);
-		tmp->next = malloc(sizeof(t_lst));
-		tmp = tmp->next;
+		*sa = tmp;
+        sa = &( tmp->next );
 		i++;
 	}
-	tmp->next = NULL;
-	temp->next = NULL;
+	print_list(tmp);
+	printf("lol\n");
 	return ;
 }
 int main(int argc, char **argv)
@@ -70,8 +71,6 @@ int main(int argc, char **argv)
 	argv++;
 	if (argc == 2)
 		argv = get_quote(argv[0]);
-	stack_a = malloc(sizeof(t_lst));
-	stack_b = malloc(sizeof(t_lst));
 	stack_ini(&stack_a, &stack_b, argv);
 	if(stack_a->next == NULL)
 		exit(0);

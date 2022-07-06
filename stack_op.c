@@ -75,14 +75,11 @@ void	rev_rotate(t_lst **in, int mode)
 	t_lst	*f_ptr;
 
 	in_ptr = *in;
-	printf("first : %d\n", (*in)->content);
-	while(in_ptr->next != NULL)
+	while(in_ptr->next->next != NULL)
 		in_ptr = in_ptr->next;
 	f_ptr = in_ptr;
-	printf("last : %d\n", f_ptr->content);
 	f_ptr->next = *in;
 	*in = f_ptr;
-	in_ptr = NULL;
 
 	if (mode == 'a')
 		printf("rra\n");
