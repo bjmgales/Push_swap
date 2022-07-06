@@ -94,15 +94,18 @@ void	num_parse(t_lst **sa)
 	ptr = *sa;
 	tmp = *sa;
 	ptr = ptr->next;
-	while(ptr->next != NULL)
+	while(tmp != NULL)
 	{
 		if (tmp->content == ptr->content)
 			print_and_exit("Error");
-			ptr = ptr->next;
-		if (ptr->next == NULL)
+		ptr = ptr->next;
+		if (ptr == NULL)
 		{
 			tmp = tmp->next;
+			if (tmp == NULL)
+				break;
 			ptr = tmp->next;
+	print_list(ptr);
 		}
 	}
 	already_sorted(sa);

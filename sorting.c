@@ -15,8 +15,7 @@
 void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 {
 	*tmp_ptr = sa;
-	*a_ptr = sa;
-	while ((*tmp_ptr)->next != NULL)
+	while ((*tmp_ptr) != NULL)
 	{
 		if ((*a_ptr)->content < (*tmp_ptr)->content)
 			*a_ptr = *tmp_ptr;
@@ -28,7 +27,7 @@ void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 {
 	*tmp_ptr = sa;
 	*a_ptr = sa;
-	while ((*tmp_ptr)->next != NULL)
+	while ((*tmp_ptr) != NULL)
 	{
 		if ((*a_ptr)->content > (*tmp_ptr)->content)
 			*a_ptr = *tmp_ptr;
@@ -76,13 +75,13 @@ void	sort(t_lst **sa, t_lst **sb)
 	int	tmp;
 
 	tmp = ft_listsize(*sa);
-	if(tmp == 2)
+	if(tmp == 1)
 	{
 		swap(sa, 'a');
 		return;
 	}
 
-	if (tmp == 3)
+	if (tmp == 2)
 	{
 		three_sort(sa);
 		return ;

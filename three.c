@@ -14,11 +14,23 @@
 
 void final_three(t_lst **sa, int big, int small)
 {
-	//if (big == 2 && small == 1)
-	//{
+	if (big == 1 && small == 0)
+	{
 		rev_rotate(sa, 'a');
 		swap(sa, 'a');
-	//}
+	}
+	if (big == 1 && small == 2)
+		rev_rotate(sa, 'a');
+	if (big == 2 && small == 1)
+		swap(sa, 'a');
+	if (big == 0 && small == 1)
+		rotate(sa, 'a');
+	if (big == 0 && small == 2)
+	{
+		swap(sa, 'a');
+		rotate(sa, 'a');
+	}
+	return ;
 }
 void three_sort(t_lst **sa)
 {
@@ -32,8 +44,6 @@ void three_sort(t_lst **sa)
 	position_s = get_position(*sa, a_ptr->content);
 	find_biggest(*sa, &t_ptr, &a_ptr);
 	position_b = get_position(*sa, a_ptr->content);
-	position_b++;
-	position_s++;
 	final_three(sa, position_b, position_s);
 	return ;
 }

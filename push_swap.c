@@ -53,8 +53,6 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
         sa = &( tmp->next );
 		i++;
 	}
-	print_list(tmp);
-	printf("lol\n");
 	return ;
 }
 int main(int argc, char **argv)
@@ -76,5 +74,6 @@ int main(int argc, char **argv)
 		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b);
+	print_list(stack_a);
 	exit (0);
 }
