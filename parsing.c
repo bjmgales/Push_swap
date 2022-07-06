@@ -72,16 +72,16 @@ void	already_sorted(t_lst **sa)
 	ptr = *sa;
 	tmp = *sa;
 	ptr = ptr->next;
+
 	while (tmp->next != NULL && tmp->content < ptr->content)
 	{
 		ptr = ptr->next;
-		if (ptr->next == NULL)
+		if (ptr == NULL)
 		{
 			tmp = tmp->next;
 			ptr = tmp->next;
 		}
 	}
-	tmp = tmp->next;
 	if (tmp->next == NULL)
 		exit(0);
 }
@@ -91,10 +91,9 @@ void	num_parse(t_lst **sa)
 	t_lst	*ptr;
 	t_lst	*tmp;
 
-	ptr = *sa;
+	ptr = (*sa)->next;
 	tmp = *sa;
-	ptr = ptr->next;
-	while(tmp != NULL)
+	while(tmp->next != NULL)
 	{
 		if (tmp->content == ptr->content)
 			print_and_exit("Error");
@@ -102,10 +101,7 @@ void	num_parse(t_lst **sa)
 		if (ptr == NULL)
 		{
 			tmp = tmp->next;
-			if (tmp == NULL)
-				break;
 			ptr = tmp->next;
-	print_list(ptr);
 		}
 	}
 	already_sorted(sa);
