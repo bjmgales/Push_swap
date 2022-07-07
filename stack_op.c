@@ -48,24 +48,26 @@ void	swap(t_lst **in, int mode)
 
 void rotate(t_lst **in, int mode)
 {
-	t_lst *last;
-	t_lst *i;
-
+	t_lst 	*last;
+	t_lst 	*i;
+	int		tmp;
+//le premier element devient dernier, vers le haut
 	last = *in;
 	i = *in;
-
 	while (last->next != NULL)
 		last = last->next;
-	last->content = (*in)->content;
+	tmp = (*in)->content;
 	while (i->next != NULL)
 	{
 		i->content = i->next->content;
 		i = i->next;
 	}
+	i->content = tmp;
 	if (mode == 'a')
 		printf("ra\n");
 	if (mode == 'b')
 		printf("rb\n");
+	print_list(*in);
 	return ;
 }
 
@@ -74,7 +76,6 @@ void	rev_rotate(t_lst **in, int mode)
 	t_lst	*in_ptr;
 	t_lst	*f_ptr;
 	t_lst	*end;
-	int		tmp;
 
 	in_ptr = *in;
 	end = *in;

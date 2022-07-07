@@ -69,11 +69,12 @@ int main(int argc, char **argv)
 	argv++;
 	if (argc == 2)
 		argv = get_quote(argv[0]);
+	stack_b = malloc(sizeof(t_lst));
 	stack_ini(&stack_a, &stack_b, argv);
 	if(stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b);
-	print_list(stack_a);
+	system("leaks push_swap");
 	exit (0);
 }

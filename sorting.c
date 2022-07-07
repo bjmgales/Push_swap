@@ -80,7 +80,7 @@ void	sort(t_lst **sa, t_lst **sb)
 		swap(sa, 'a');
 		return;
 	}
-
+	printf("lol\n");
 	if (tmp == 2)
 	{
 		three_sort(sa);
@@ -88,6 +88,7 @@ void	sort(t_lst **sa, t_lst **sb)
 	}
 	while (ft_listsize(*sb) != tmp)
 		sorting(sa, sb);
+	print_list(*sa);
 	while(ft_listsize(*sa) != tmp)
 		push_out(sb, sa, 'a');
 	return;
