@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/05 11:20:13 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 12:41:05 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,39 +42,41 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 	t_lst *temp;
 
 	i = 0;
-	
-	
+
+
 
 	while (argv[i])
 	{
 		tmp = malloc(sizeof(t_lst));
 		tmp->content = ft_atoi(argv[i]);
 		*sa = tmp;
+		*sb = temp;
         sa = &( tmp->next );
 		i++;
 	}
+	*sa = NULL;
+	*sb = NULL;
 	return ;
 }
 int main(int argc, char **argv)
 {
 	t_lst *stack_a;
-	t_lst *stack_b; // 3 element : 3 ou moins
-					// 5 element : 12 ou moins
-					// 100 elememt : 1100 ou moins
-					// 500 element : 8000 ou moins
-
+	t_lst *stack_b;
+	// 3 element : 3 ou moins
+	// 5 element : 12 ou moins
+	// 100 elememt : 1100 ou moins
+	// 500 element : 8000 ou moins
 	if (argc == 1)
 		exit (0);
 	parsing(argc, argv);
 	argv++;
 	if (argc == 2)
 		argv = get_quote(argv[0]);
-	stack_b = malloc(sizeof(t_lst));
 	stack_ini(&stack_a, &stack_b, argv);
+	stack_b = NULL;
 	if(stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b);
-	system("leaks push_swap");
 	exit (0);
 }

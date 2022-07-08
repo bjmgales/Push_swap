@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/05 12:48:23 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 11:42:45 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void rotate(t_lst **in, int mode)
 		printf("ra\n");
 	if (mode == 'b')
 		printf("rb\n");
-	print_list(*in);
 	return ;
 }
 

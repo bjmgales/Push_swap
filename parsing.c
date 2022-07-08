@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:35:20 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/05 11:22:06 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 11:33:33 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,9 @@ void	num_parse(t_lst **sa)
 	t_lst	*ptr;
 	t_lst	*tmp;
 
-	ptr = (*sa)->next;
 	tmp = *sa;
+	ptr = (*sa)->next;
+
 	while(tmp->next != NULL)
 	{
 		if (tmp->content == ptr->content)

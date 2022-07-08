@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/05 12:46:32 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 11:42:37 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	sort(t_lst **sa, t_lst **sb)
 		swap(sa, 'a');
 		return;
 	}
-	printf("lol\n");
 	if (tmp == 2)
 	{
 		three_sort(sa);

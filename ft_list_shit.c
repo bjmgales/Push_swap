@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/01 11:47:46 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 11:40:23 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_listsize(t_lst *lst)
 	int	i;
 
 	i = 0;
-	while (lst->next)
+	if (!lst)
+		return (i);
+	while (lst)
 	{
 		lst = lst->next;
 		i++;
@@ -53,10 +55,12 @@ void	stack_init(t_lst **sa, t_lst **sb, t_lst **first_a, t_lst **first_b, char *
 void	print_list(t_lst *lst)
 {
 	int i = 0;
-	while (lst != NULL)
+	t_lst *tmp;
+	tmp = lst;
+	while (tmp != NULL)
 	{
-		printf("%d Element in list : %d\n",i++, lst->content);
-		lst= lst->next;
+		printf("%d Element in list : %d\n",i++, tmp->content);
+		tmp = tmp->next;
 	}
 	return ;
 }
