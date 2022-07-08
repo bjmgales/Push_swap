@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 11:42:37 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:44:54 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,25 +70,19 @@ void	sorting(t_lst **sa, t_lst **sb)
 	return;
 }
 
-void	sort(t_lst **sa, t_lst **sb)
+void	sort(t_lst **sa, t_lst **sb, int argc)
 {
 	int	tmp;
 
 	tmp = ft_listsize(*sa);
-	if(tmp == 1)
-	{
+	if(tmp == 2)
 		swap(sa, 'a');
-		return;
-	}
-	if (tmp == 2)
-	{
+	if (tmp == 3)
 		three_sort(sa);
-		return ;
-	}
-	while (ft_listsize(*sb) != tmp)
-		sorting(sa, sb);
-	print_list(*sa);
-	while(ft_listsize(*sa) != tmp)
-		push_out(sb, sa, 'a');
-	return;
+	if (tmp == 5)
+		five_sort(sa, sb);
+	if (tmp <= 5)
+		return;
+	big_stack_sort(sa, sb, argc);
+
 }

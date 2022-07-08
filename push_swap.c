@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 12:41:05 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/08 16:10:01 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 	i = 0;
 
 
-
 	while (argv[i])
 	{
 		tmp = malloc(sizeof(t_lst));
 		tmp->content = ft_atoi(argv[i]);
+		tmp->index++;
 		*sa = tmp;
 		*sb = temp;
+		printf("%d\n",(*sa)->index);
         sa = &( tmp->next );
 		i++;
 	}
@@ -77,6 +78,6 @@ int main(int argc, char **argv)
 	if(stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
-	sort(&stack_a, &stack_b);
+	sort(&stack_a, &stack_b, argc);
 	exit (0);
 }
