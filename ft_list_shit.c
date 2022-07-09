@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 11:40:23 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/09 09:39:59 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	print_list(t_lst *lst)
 	tmp = lst;
 	while (tmp != NULL)
 	{
-		printf("%d Element in list : %d\n",i++, tmp->content);
+		printf("%d Element in list : %d\n",tmp->index, tmp->content);
 		tmp = tmp->next;
 	}
 	return ;

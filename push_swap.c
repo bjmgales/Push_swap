@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 16:10:01 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/09 11:43:39 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 	{
 		tmp = malloc(sizeof(t_lst));
 		tmp->content = ft_atoi(argv[i]);
-		tmp->index++;
+		tmp->index = i;
 		*sa = tmp;
 		*sb = temp;
-		printf("%d\n",(*sa)->index);
         sa = &( tmp->next );
 		i++;
 	}
