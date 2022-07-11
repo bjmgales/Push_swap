@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/10 15:06:31 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:35:19 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,24 @@ void	free_lst(t_lst *stack)
 		free (ptr);
 	}
 }
-void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
+void	stack_ini(t_lst **sa, t_lst **sb, char **argv, int *tab)
 {
 	int	i;
+	int c;
 	t_lst *tmp;
 	t_lst *temp;
 
 	i = 0;
-
-
+	c = 0;
 	while (argv[i])
 	{
 		tmp = malloc(sizeof(t_lst));
 		tmp->content = ft_atoi(argv[i]);
-		tmp->index = i;
+		tmp->position = i;
+		while(tab[c] != tmp->content)
+			c++;
+		tmp->index = c;
+		c = 0;
 		*sa = tmp;
 		*sb = temp;
         sa = &( tmp->next );
@@ -60,8 +64,9 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 }
 int main(int argc, char **argv)
 {
-	t_lst *stack_a;
-	t_lst *stack_b;
+	t_lst 	*stack_a;
+	t_lst 	*stack_b;
+	int		*sorted;
 	// 3 element : 3 ou moins
 	// 5 element : 12 ou moins
 	// 100 elememt : 1100 ou moins
@@ -72,12 +77,11 @@ int main(int argc, char **argv)
 	argv++;
 	if (argc == 2)
 		argv = get_quote(argv[0]);
-	stack_ini(&stack_a, &stack_b, argv);
-	stack_b = NULL;
+	sorted = get_tab(argv);
+	stack_ini(&stack_a, &stack_b, argv, sorted);
 	if(stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b, argc);
-	system("leaks push_swap");
 	exit (0);
 }

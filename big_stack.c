@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:07:30 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/10 16:03:37 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 16:29:34 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,34 @@ int		*sort_tab(int *tab, int size)
 	free(tab);
 	return (sort);
 }
-int	*get_tab(t_lst *sa)
+int	*get_tab(char **argv)
 {
 	int *tab;
 	int i = 0;
-	int tmp = ft_listsize(sa);
-	tab = malloc(sizeof(int) * ft_listsize(sa));
-	while (sa != NULL)
-	{
-		tab[i] = sa->content;
+
+	while (argv[i])
 		i++;
-		sa = sa->next;
+	tab = malloc(sizeof(int) * i);
+	i = -1;
+	while (argv[++i])
+	{
+		tab[i] = ft_atoi(argv[i]);
 	}
-	tab = sort_tab(tab, tmp);
+	tab = sort_tab(tab, i);
 	return (tab);
 }
 void	big_stack_sort(t_lst **sa, t_lst **sb)
 {
-	int	*tab;
 	int tmp;
 
-	if (ft_listsize(sa) < 500)
-		tmp = ft_listsize(sa) / 4;
+	if (ft_listsize(*sa) < 500)
+		tmp = ft_listsize(*sa) / 5;
 	else
-		tmp = ft_listsize / 11;
+		tmp = ft_listsize(*sa) / 11;
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, --tmp);
+	print_list(*sb);
+		big_stack_next(sa, sb, --tmp);
 
-	tab = get_tab(*sa);
-	big_stack_next(sa, sb, tab, tmp);
 	return;
 }

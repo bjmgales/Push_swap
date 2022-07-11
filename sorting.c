@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 15:44:54 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 16:17:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ void	sort(t_lst **sa, t_lst **sb, int argc)
 		five_sort(sa, sb);
 	if (tmp <= 5)
 		return;
-	big_stack_sort(sa, sb, argc);
-
+	big_stack_sort(sa, sb);
 }

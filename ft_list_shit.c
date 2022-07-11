@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/09 09:39:59 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 12:03:18 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,19 @@ void	print_list(t_lst *lst)
 	tmp = lst;
 	while (tmp != NULL)
 	{
-		printf("%d Element in list : %d\n",tmp->index, tmp->content);
+		printf("%d Element in list : %d. Index = %d\n",tmp->position, tmp->content, tmp->index);
 		tmp = tmp->next;
 	}
 	return ;
+}
+
+int arg_nbr(char **argv)
+{
+	int i;
+
+	i = -1;
+
+	while (argv[i])
+		i++;
+	return (i);
 }

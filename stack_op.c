@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 11:42:45 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 16:33:39 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void rotate(t_lst **in, int mode)
 	while (i->next != NULL)
 	{
 		i->content = i->next->content;
+		i->index = i->next->index;
 		i = i->next;
 	}
 	i->content = tmp;
@@ -75,6 +76,7 @@ void	rev_rotate(t_lst **in, int mode)
 	t_lst	*in_ptr;
 	t_lst	*f_ptr;
 	t_lst	*end;
+	int i;
 
 	in_ptr = *in;
 	end = *in;
@@ -84,6 +86,12 @@ void	rev_rotate(t_lst **in, int mode)
 	f_ptr->next = *in;
 	*in = f_ptr;
 	in_ptr->next=NULL;
+	i = 0;
+	while (end != NULL)
+	{
+		end->position = i++;
+		end = end->next;
+	}
 	if (mode == 'a')
 		printf("rra\n");
 	if (mode == 'b')

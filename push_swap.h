@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2022/07/10 15:48:39 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/11 12:58:46 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@
 typedef struct s_lst
 {
 	int		content;
+	int		position;
 	int		index;
 	struct s_lst	*next;
 } t_lst;
 
+int		*get_tab(char **argv);
+int 	arg_nbr(char **argv);
+void	big_stack_next(t_lst **sa, t_lst **sb, int chunks);
 void	big_stack_sort(t_lst **sa, t_lst **sb);
 void	five_sort(t_lst **sa, t_lst **sb);
 void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr);
