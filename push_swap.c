@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/09 11:43:39 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/10 15:06:31 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ int main(int argc, char **argv)
 		exit(0);
 	num_parse(&stack_a);
 	sort(&stack_a, &stack_b, argc);
+	system("leaks push_swap");
 	exit (0);
 }

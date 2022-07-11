@@ -25,6 +25,8 @@ SRCS=./ft_printf/ft_printf.c \
 ./three.c \
 ./five.c \
 ./big_stack.c \
+./big_stack_2.c \
+
 
 
 OBJS=${SRCS:.c=.o}

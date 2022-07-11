@@ -6,75 +6,84 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:07:30 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/09 14:05:11 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/10 16:03:37 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int	already_in_tab(int *tab, int tmp)
-{
-	int	i;
-	i = -1;
 
-	while(tab[++i])
-	{
-		if(tmp == tab[i])
+int	already_in_tab(int *tab, int tmp, int size)
+{
+	int i;
+
+	i = -1;
+	while (++i < size)
+		if (tab[i] == tmp)
 			return (1);
-	}
 	return (0);
 }
-void	smallest_for_tab(t_lst *sa, t_lst *tmp, t_lst	*a_ptr, int *tab)
-{
-	int	i;
-	int t = 0;
 
-	i = 0;
-	tmp = sa;
-	a_ptr = sa;
-	while (i != ft_listsize(sa) - 1)
+int biggest_tab(int *tab, int size)
+{
+	int i;
+	int tmp;
+
+	i = -1;
+	tmp = tab[0];
+	while (++i < size)
+		if (tmp < tab[i])
+				tmp = tab[i];
+	return (tmp);
+}
+int		*sort_tab(int *tab, int size)
+{
+	int *sort = malloc(sizeof(int) * size);
+	int i = -1;
+	int c = 0;
+	int tmp;
+	int biggest;
+
+	biggest = biggest_tab(tab, size);
+	tmp = tab[c];
+	while (c < size)
 	{
-		if (tmp == NULL)
-		{
-			tmp = sa;
-			a_ptr = sa;
-		}
-		printf("%d\n", a_ptr->content);
-			if ((a_ptr)->content > (tmp)->content && !already_in_tab(tab, a_ptr->content))
-			{
-				a_ptr = tmp;
-				tab[i++] = (a_ptr)->content;
-			}
-		tmp = tmp->next;
+		while(++i < size)
+			if (tmp > tab[i] && !already_in_tab(sort, tab[i], c))
+				tmp = tab[i];
+		if (!already_in_tab(sort, tmp, c))
+			sort[c++] = tmp;
+		tmp = biggest;
+		i = -1;
 	}
-	return;
+	free(tab);
+	return (sort);
 }
-void	get_tab(t_lst **sa)
+int	*get_tab(t_lst *sa)
 {
-	int		*tab;
-	t_lst	*tmp;
-	t_lst	*a_ptr;
-	int		i = -1;
-	tab = malloc(sizeof(int) * (ft_listsize(*sa) + 1));
-	tab[ft_listsize(*sa) + 1] = '\0';
-	smallest_for_tab(*sa, tmp, a_ptr, tab);
-	 while(tab[++i])
-	 	printf("%d\n", tab[i]);
+	int *tab;
+	int i = 0;
+	int tmp = ft_listsize(sa);
+	tab = malloc(sizeof(int) * ft_listsize(sa));
+	while (sa != NULL)
+	{
+		tab[i] = sa->content;
+		i++;
+		sa = sa->next;
+	}
+	tab = sort_tab(tab, tmp);
+	return (tab);
+}
+void	big_stack_sort(t_lst **sa, t_lst **sb)
+{
+	int	*tab;
+	int tmp;
 
-}
-void	big_stack_sort(t_lst **sa, t_lst **sb, int argc)
-{
-	if (argc < 500)
-		argc /= 4;
+	if (ft_listsize(sa) < 500)
+		tmp = ft_listsize(sa) / 4;
 	else
-		argc /= 11;
-	get_tab(sa);
-/*	while (ft_listsize(*sb) != tmp)
-	{
-		sorting(sa, sb);
-		if (ft_listsize(*sa) == 5)
-			five_sort(sa, sb);
-	}
-		while(ft_listsize(*sa) != tmp)
-			push_out(sb, sa, 'a');*/
+		tmp = ft_listsize / 11;
+
+	tab = get_tab(*sa);
+	big_stack_next(sa, sb, tab, tmp);
 	return;
 }
