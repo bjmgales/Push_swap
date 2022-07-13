@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:07:30 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/11 16:29:34 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/13 12:14:27 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,15 @@ void	big_stack_sort(t_lst **sa, t_lst **sb)
 	else
 		tmp = ft_listsize(*sa) / 11;
 		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, --tmp);
-	print_list(*sb);
-		big_stack_next(sa, sb, --tmp);
+		print_list(*sa);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
+		big_stack_next(sa, sb, tmp);
 
 	return;
 }

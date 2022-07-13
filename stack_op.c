@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/11 16:33:39 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/13 10:20:50 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void rotate(t_lst **in, int mode)
 	t_lst 	*last;
 	t_lst 	*i;
 	int		tmp;
-//le premier element devient dernier, vers le haut
+
 	last = *in;
 	i = *in;
 	while (last->next != NULL)
