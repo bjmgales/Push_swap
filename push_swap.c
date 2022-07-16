@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/11 15:35:19 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:08:41 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv, int *tab)
 	int	i;
 	int c;
 	t_lst *tmp;
-	t_lst *temp;
+	t_lst *temp = NULL;
 
 	i = 0;
 	c = 0;
@@ -79,9 +79,11 @@ int main(int argc, char **argv)
 		argv = get_quote(argv[0]);
 	sorted = get_tab(argv);
 	stack_ini(&stack_a, &stack_b, argv, sorted);
-	if(stack_a->next == NULL)
+	if (stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
-	sort(&stack_a, &stack_b, argc);
+	sort(&stack_a, &stack_b, sorted);
+	reposition(&stack_a, &stack_b, sorted, ft_listsize(stack_a));
+	print_list(stack_a);
 	exit (0);
 }

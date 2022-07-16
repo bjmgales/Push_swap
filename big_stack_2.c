@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/13 13:00:57 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:06:05 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void top_b_min(t_lst **sb)
 	int		temp;
 	if (!*sb)
 		return;
-	print_list(*sb);
 	find_smallest(*sb, &tmp, &a_ptr);
 	temp = a_ptr->content;
 	tmp = *sb;
@@ -28,35 +27,34 @@ void top_b_min(t_lst **sb)
 			rev_rotate(sb, 'b');
 		else
 			rotate(sb, 'b');
-		 printf("lol\n");
 	}
 
 }
 
-int	get_index(t_lst **sa, int position)
+int	get_content(t_lst **sa, int position)
 {
 	t_lst	*tmp;
 
 	tmp = *sa;
 	while (tmp->position != position)
 		tmp = tmp->next;
-
-	return (tmp->index);
+	return (tmp->content);
 }
 void	stack_op(t_lst **sa, t_lst **sb, int position)
 {
 	int tmp;
-		print_list(*sa);
-	while ((*sa)->index != get_index(sa, position))
+
+	tmp = get_content(sa, position);
+	while ((*sa)->content != tmp)
 	{
 		if (position > ft_listsize(*sa) / 2)
-			rev_rotate(sa, 'c');
+			rev_rotate(sa, 'a');
 		else
-			rotate(sa, 'c');
+			rotate(sa, 'a');
 	}
-	printf("lol\n");
 	top_b_min(sb);
 	push_out(sa, sb, 'b');
+	return ;
 }
 int	find_shortest_push(int *positions, int tabSize, int listSize)
 {
@@ -83,21 +81,29 @@ int	find_shortest_push(int *positions, int tabSize, int listSize)
 		tabSize++;
 	}
 	i = 0;
-	while (tmp != moves_number[i])
+	while (tmp != moves_number[i] && i < tabSize)
 		i++;
+	if (i != 0)
 		free(moves_number);
 	return (positions[i]);
 }
-void	reposition(t_lst **sa, t_lst **sb)
+void	reposition(t_lst **sa, t_lst **sb, int *tab, int tabSize)
 {
 	t_lst	*tmp;
 	int		i;
+	int		c;
 
 	i = 0;
+	c = 0;
 	tmp = *sa;
 	while (tmp != NULL)
 	{
 		tmp->position = i++;
+		while (tmp->content != tab[c] && c < tabSize)
+			c++;
+		if (tmp->content == tab[c])
+			tmp->index = c;
+		c = 0;
 		tmp = tmp->next;
 	}
 	i = 0;
@@ -105,6 +111,11 @@ void	reposition(t_lst **sa, t_lst **sb)
 	while (tmp != NULL)
 	{
 		tmp->position = i++;
+		while (tmp->content != tab[c] && c < tabSize)
+			c++;
+		if (tmp->content == tab[c])
+			tmp->index = c;
+		c = 0;
 		tmp = tmp->next;
 	}
 	return;
@@ -116,16 +127,23 @@ void	big_stack_next(t_lst **sa, t_lst **sb, int chunks)
 	int		*positions;
 	int		i;
 
+	if (ft_listsize(*sa) == 1)
+	{
+		top_b_min(sb);
+		push_out(sa, sb, 'b');
+		return;
+	}
 	i = -1;
 	tmp = *sa;
-	positions = malloc(sizeof(int) * chunks);
+	positions = malloc(sizeof(int) * (chunks) + 1);
 	while(tmp != NULL)
 	{
 		if (tmp->index < chunks)
-		 		positions[i++] = tmp->position;
+		 		positions[++i] = tmp->position;
 		tmp = tmp->next;
 	}
 	stack_op(sa, sb, find_shortest_push(positions, i, ft_listsize(*sa)));
-	reposition(sa, sb);
-	free (positions);
+	if (i != 0)
+		free (positions);
+	return ;
 }

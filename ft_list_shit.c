@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/11 12:03:18 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 14:27:40 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	stack_init(t_lst **sa, t_lst **sb, t_lst **first_a, t_lst **first_b, char *
 
 void	print_list(t_lst *lst)
 {
-	int i = 0;
 	t_lst *tmp;
+	
 	tmp = lst;
 	while (tmp != NULL)
 	{

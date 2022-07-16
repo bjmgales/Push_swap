@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/11 16:17:28 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 15:50:09 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 {
 	*tmp_ptr = sa;
+	*a_ptr = sa;
 	while ((*tmp_ptr) != NULL)
 	{
 		if ((*a_ptr)->content < (*tmp_ptr)->content)
@@ -67,10 +68,11 @@ void	sorting(t_lst **sa, t_lst **sb)
 			rotate(sa, 'a');
 	}
 		push_out(sa, sb, 'b');
+		printf("lol\n");
 	return;
 }
 
-void	sort(t_lst **sa, t_lst **sb, int argc)
+void	sort(t_lst **sa, t_lst **sb, int *tab)
 {
 	int	tmp;
 
@@ -81,7 +83,14 @@ void	sort(t_lst **sa, t_lst **sb, int argc)
 		three_sort(sa);
 	if (tmp == 5)
 		five_sort(sa, sb);
-	if (tmp <= 5)
+	if (tmp > 5 && tmp < 15)
+	{
+		while (ft_listsize(*sa) != 0)
+			sorting(sa, sb);
+		while (ft_listsize(*sb) != 0)
+			push_out(sb, sa, 'a');
+	}
+	if (tmp < 15)
 		return;
-	big_stack_sort(sa, sb);
+	big_stack_sort(sa, sb, tab, tmp);
 }

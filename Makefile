@@ -1,6 +1,6 @@
 NAME= push_swap
 CC= gcc
-CFLAGS=
+CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address
 RM=rm -f
 SRCS=./ft_printf/ft_printf.c \
 ./ft_printf/ft_printf_util.c \
@@ -25,6 +25,7 @@ SRCS=./ft_printf/ft_printf.c \
 ./three.c \
 ./five.c \
 ./big_stack.c \
+./endgame.c \
 ./big_stack_2.c \
 
 

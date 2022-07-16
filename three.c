@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:14:32 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/05 12:36:07 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 14:28:28 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void final_three(t_lst **sa, int big, int small)
 void three_sort(t_lst **sa)
 {
 	t_lst	*t_ptr;
-	t_lst	*big;
 	t_lst	*a_ptr;
 	int		position_s;
 	int		position_b;

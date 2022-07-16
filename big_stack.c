@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:07:30 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/13 12:14:27 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:04:03 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,11 @@ int	*get_tab(char **argv)
 	tab = malloc(sizeof(int) * i);
 	i = -1;
 	while (argv[++i])
-	{
 		tab[i] = ft_atoi(argv[i]);
-	}
 	tab = sort_tab(tab, i);
 	return (tab);
 }
-void	big_stack_sort(t_lst **sa, t_lst **sb)
+void	big_stack_sort(t_lst **sa, t_lst **sb, int *tab, int tabSize)
 {
 	int tmp;
 
@@ -82,16 +80,13 @@ void	big_stack_sort(t_lst **sa, t_lst **sb)
 		tmp = ft_listsize(*sa) / 5;
 	else
 		tmp = ft_listsize(*sa) / 11;
-		big_stack_next(sa, sb, tmp);
-		print_list(*sa);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
-		big_stack_next(sa, sb, tmp);
+	while (ft_listsize(*sa) != 0)
+	{
+		big_stack_next(sa, sb, tmp++);
+		reposition(sa, sb, tab, tabSize);
+	}
+	while (ft_listsize(*sb) != 0)
+		endgame(sa, sb);
 
 	return;
 }
