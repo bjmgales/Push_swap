@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 12:51:35 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/16 14:29:27 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 15:12:45 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	top_and_push(t_lst **sa, t_lst **sb, int big, int position)
 	}
 	push_out(sb, sa, 'a');
 }
+
 void	endgame(t_lst **sa, t_lst **sb)
 {
-	t_lst *tmp;
-	t_lst *ptr;
-	int big;
-	int position;
+	t_lst	*tmp;
+	t_lst	*ptr;
+	int		big;
+	int		position;
 
 	find_biggest(*sb, &tmp, &ptr);
 	big = ptr->content;

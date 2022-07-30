@@ -6,14 +6,13 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 17:35:14 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/13 10:20:50 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:16:36 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void push_out(t_lst **in, t_lst **out, int mode)
+void	push_out(t_lst **in, t_lst **out, int mode)
 {
 	t_lst	*tmp;
 
@@ -30,8 +29,9 @@ void push_out(t_lst **in, t_lst **out, int mode)
 
 void	swap(t_lst **in, int mode)
 {
-	t_lst	*tmp = malloc(sizeof(t_lst));
+	t_lst	*tmp;
 
+	tmp = malloc(sizeof(t_lst));
 	tmp->next = malloc(sizeof(t_lst));
 	if (mode == 'a')
 		printf("sa\n");
@@ -46,10 +46,10 @@ void	swap(t_lst **in, int mode)
 	return ;
 }
 
-void rotate(t_lst **in, int mode)
+void	rotate(t_lst **in, int mode)
 {
-	t_lst 	*last;
-	t_lst 	*i;
+	t_lst	*last;
+	t_lst	*i;
 	int		tmp;
 
 	last = *in;
@@ -76,16 +76,16 @@ void	rev_rotate(t_lst **in, int mode)
 	t_lst	*in_ptr;
 	t_lst	*f_ptr;
 	t_lst	*end;
-	int i;
+	int		i;
 
 	in_ptr = *in;
 	end = *in;
-	while(in_ptr->next->next != NULL)
+	while (in_ptr->next->next != NULL)
 		in_ptr = in_ptr->next;
 	f_ptr = in_ptr->next;
 	f_ptr->next = *in;
 	*in = f_ptr;
-	in_ptr->next=NULL;
+	in_ptr->next = NULL;
 	i = 0;
 	while (end != NULL)
 	{

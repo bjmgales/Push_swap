@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/16 15:50:09 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 15:07:16 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 			*a_ptr = *tmp_ptr;
 		*tmp_ptr = (*tmp_ptr)->next;
 	}
-	return;
+	return ;
 }
+
 void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 {
 	*tmp_ptr = sa;
@@ -34,11 +35,13 @@ void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr)
 			*a_ptr = *tmp_ptr;
 		*tmp_ptr = (*tmp_ptr)->next;
 	}
-	return;
+	return ;
 }
+
 int	get_position(t_lst *sa, int content)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (sa->content != content)
 	{
@@ -58,7 +61,6 @@ void	sorting(t_lst **sa, t_lst **sb)
 	find_smallest(*sa, &tmp_ptr, &a_ptr);
 	position = get_position(*sa, a_ptr->content);
 	tmp = a_ptr->content;
-
 	tmp_ptr = *sa;
 	while ((*sa)->content != tmp)
 	{
@@ -67,9 +69,8 @@ void	sorting(t_lst **sa, t_lst **sb)
 		else
 			rotate(sa, 'a');
 	}
-		push_out(sa, sb, 'b');
-		printf("lol\n");
-	return;
+	push_out(sa, sb, 'b');
+	return ;
 }
 
 void	sort(t_lst **sa, t_lst **sb, int *tab)
@@ -77,13 +78,13 @@ void	sort(t_lst **sa, t_lst **sb, int *tab)
 	int	tmp;
 
 	tmp = ft_listsize(*sa);
-	if(tmp == 2)
+	if (tmp == 2)
 		swap(sa, 'a');
 	if (tmp == 3)
 		three_sort(sa);
 	if (tmp == 5)
 		five_sort(sa, sb);
-	if (tmp > 5 && tmp < 15)
+	if ((tmp > 5 && tmp < 15) || tmp == 4)
 	{
 		while (ft_listsize(*sa) != 0)
 			sorting(sa, sb);
@@ -91,6 +92,6 @@ void	sort(t_lst **sa, t_lst **sb, int *tab)
 			push_out(sb, sa, 'a');
 	}
 	if (tmp < 15)
-		return;
+		return ;
 	big_stack_sort(sa, sb, tab, tmp);
 }

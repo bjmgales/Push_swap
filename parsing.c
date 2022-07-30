@@ -6,19 +6,19 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 09:35:20 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/08 11:33:33 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:08:11 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-char **get_quote(char *argv)
+
+char	**get_quote(char *argv)
 {
 	char	**strs;
 	int		i;
 
 	i = 0;
 	strs = ft_split(argv, ' ');
-
 	while (strs[i])
 		i++;
 	if (!strs[0])
@@ -28,7 +28,6 @@ char **get_quote(char *argv)
 	return (strs);
 }
 
-
 void	parse(char *argv)
 {
 	int	i;
@@ -36,32 +35,32 @@ void	parse(char *argv)
 	i = -1;
 	while (argv[++i])
 	{
-		if ((argv[i] < 48 || argv[i] > 57) && (argv[i] != 43 && argv[i] != 45 && argv[i] != 32))
+		if ((argv[i] < 48 || argv[i] > 57) && (argv[i] != 43
+				&& argv[i] != 45 && argv[i] != 32))
 			print_and_exit("Error");
-		if ((argv[i] == 43 || argv[i] == 45) && (argv[i + 1] < 48 || argv[i + 1] > 57))
+		if ((argv[i] == 43 || argv[i] == 45) && (argv[i + 1]
+				< 48 || argv[i + 1] > 57))
 			print_and_exit("Error");
 		if (i > 0 && (argv[i] == 43 || argv[i] == 45) && (argv[i - 1] != 32))
 			print_and_exit("Error");
 	}
-	return;
-
+	return ;
 }
 
 void	parsing(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (argv[++i])
-		if (ft_atoi(argv[i]) > INT32_MAX || ft_atoi(argv[i]) < INT32_MIN)
-			print_and_exit("Error");
-	i = 0;
+		ft_atoi(argv[i]);
+	i = -1;
 	if (argc == 2)
-		parse(argv[1]);
+		parse(argv[0]);
 	else
 		while (argv[++i])
-	 		parse(argv[i]);
-	return;
+			parse(argv[i]);
+	return ;
 }
 
 void	already_sorted(t_lst **sa)
@@ -72,7 +71,6 @@ void	already_sorted(t_lst **sa)
 	ptr = *sa;
 	tmp = *sa;
 	ptr = ptr->next;
-
 	while (tmp->next != NULL && tmp->content < ptr->content)
 	{
 		ptr = ptr->next;
@@ -93,8 +91,7 @@ void	num_parse(t_lst **sa)
 
 	tmp = *sa;
 	ptr = (*sa)->next;
-
-	while(tmp->next != NULL)
+	while (tmp->next != NULL)
 	{
 		if (tmp->content == ptr->content)
 			print_and_exit("Error");
@@ -106,5 +103,5 @@ void	num_parse(t_lst **sa)
 		}
 	}
 	already_sorted(sa);
-	return;
+	return ;
 }

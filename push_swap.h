@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2022/07/16 16:04:35 by bgales           ###   ########.fr       */
+/*   Created: 2022/07/30 13:45:59 by bgales            #+#    #+#             */
+/*   Updated: 2022/07/30 15:11:44 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdint.h>
@@ -23,22 +23,22 @@
 
 typedef struct s_lst
 {
-	int		content;
-	int		position;
-	int		index;
+	int				content;
+	int				position;
+	int				index;
 	struct s_lst	*next;
-} t_lst;
+}	t_lst;
 
 void	endgame(t_lst **sa, t_lst **sb);
-void	reposition(t_lst **sa, t_lst **sb, int *tab, int tabSize);
+void	reposition(t_lst **sa, int *tab, int tabSize);
 int		*get_tab(char **argv);
-int 	arg_nbr(char **argv);
+int		arg_nbr(char **argv);
 void	big_stack_next(t_lst **sa, t_lst **sb, int chunks);
 void	big_stack_sort(t_lst **sa, t_lst **sb, int *tab, int tabSize);
 void	five_sort(t_lst **sa, t_lst **sb);
 void	find_biggest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr);
 int		get_position(t_lst *sa, int content);
-void 	three_sort(t_lst **sa);
+void	three_sort(t_lst **sa);
 void	find_smallest(t_lst *sa, t_lst **tmp_ptr, t_lst **a_ptr);
 int		ft_listsize(t_lst *lst);
 void	sort(t_lst **sa, t_lst **sb, int *tab);
@@ -57,6 +57,5 @@ void	swap_both(t_lst **sa, t_lst **out);
 void	rev_rotate_both(t_lst **sa, t_lst **sb);
 void	parsing(int argc, char **argv);
 void	num_parse(t_lst **sa);
-void	stack_init(t_lst **sa, t_lst **sb, t_lst **first_a, t_lst ** first_b, char **argv);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:14:32 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/16 14:28:28 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:14:24 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void final_three(t_lst **sa, int big, int small)
+void	final_three(t_lst **sa, int big, int small)
 {
 	if (big == 1 && small == 0)
 	{
@@ -32,7 +32,8 @@ void final_three(t_lst **sa, int big, int small)
 	}
 	return ;
 }
-void three_sort(t_lst **sa)
+
+void	three_sort(t_lst **sa)
 {
 	t_lst	*t_ptr;
 	t_lst	*a_ptr;

@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 12:18:24 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/01 12:05:10 by bgales           ###   ########.fr       */
+/*   Updated: 2022/07/30 14:17:08 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	swap_both(t_lst **sa, t_lst **sb)
 	return ;
 }
 
-void rotate_both(t_lst **sa, t_lst **sb)
+void	rotate_both(t_lst **sa, t_lst **sb)
 {
-	t_lst *last;
-	t_lst *i;
+	t_lst	*last;
+	t_lst	*i;
 
 	last = *sa;
 	i = *sa;
@@ -52,5 +52,5 @@ void	rev_rotate_both(t_lst **sa, t_lst **sb)
 	rev_rotate(sa, 'c');
 	rev_rotate(sb, 'c');
 	ft_printf("rrr\n");
-	return;
+	return ;
 }
