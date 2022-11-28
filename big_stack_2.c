@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:47:36 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/30 15:14:49 by bgales           ###   ########.fr       */
+/*   Updated: 2022/11/28 15:53:33 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	find_shortest_push(int *positions, int tabSize, int listSize)
 	i = 0;
 	while (tmp != moves_number[i] && i < tabSize)
 		i++;
-	if (i != 0)
-		free(moves_number);
+	free(moves_number);
 	return (positions[i]);
 }
 
@@ -109,7 +108,6 @@ void	big_stack_next(t_lst **sa, t_lst **sb, int chunks)
 		tmp = tmp->next;
 	}
 	stack_op(sa, sb, find_shortest_push(positions, i, ft_listsize(*sa)));
-	if (i != 0)
-		free (positions);
+	free (positions);
 	return ;
 }
