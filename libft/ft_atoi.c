@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:27:38 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/30 13:55:20 by bgales           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:32:13 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ void	ok_quote(const char *str)
 
 	i = -1;
 	while (str[++i])
-		if ((str[i] <= 47 || str[i] >= 58) && (str[i] != '-' && str[i] != '+'))
+	{
+		if ((str[i] < 48 || str[i] > 57) && (str[i] != '-' && str[i] != '+'))
 			print_and_exit("Error");
+		if ((str[i] == '-' || str[i] == '+') && (str[i + 1]
+				< 48 || str[i + 1] > 57))
+			print_and_exit("Error");
+	}
 }
 
 int	ft_atoi(const char *str)
