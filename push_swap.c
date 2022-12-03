@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/12/03 16:06:33 by bgales           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:38:57 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,26 @@ void	free_lst(t_lst *stack)
 	}
 }
 
+
+t_lst	*stack_test(int argc, char **argv)
+{
+	t_lst	*head;
+	t_lst	*list;
+
+	list = malloc(sizeof(*list));
+	head = list;
+	argc = -1;
+	while (argv[++argc])
+	{
+		list->content = ft_atoi(argv[argc]);
+		if (!argv[argc + 1])
+			break ;
+		list->next = malloc(sizeof(*list));
+		list = list->next;
+	}
+	return (head);
+}
+
 /*void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 {
 	int		i;
@@ -57,25 +77,6 @@ void	free_lst(t_lst *stack)
 	return ;
 }*/
 
-t_lst	*stack_test(int argc, char **argv)
-{
-	t_lst	*head;
-	t_lst	*list;
-
-	list = malloc(sizeof(*list));
-	head = list;
-	argc = -1;
-	while (argv[++argc])
-	{
-		list->content = ft_atoi(argv[argc]);
-		if (!argv[argc + 1])
-			break ;
-		list->next = malloc(sizeof(*list));
-		list = list->next;
-	}
-	return (head);
-}
-
 int	main(int argc, char **argv)
 {
 	t_lst	*stack_a;
@@ -97,3 +98,4 @@ int	main(int argc, char **argv)
 	sort(&stack_a, &stack_b, sorted);
 	exit (0);
 }
+
