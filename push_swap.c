@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/11/28 17:59:09 by bgales           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:06:33 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_lst(t_lst *stack)
 	}
 }
 
-void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
+/*void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 {
 	int		i;
 	t_lst	*tmp;
@@ -55,6 +55,25 @@ void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
 	*sa = NULL;
 	*sb = NULL;
 	return ;
+}*/
+
+t_lst	*stack_test(int argc, char **argv)
+{
+	t_lst	*head;
+	t_lst	*list;
+
+	list = malloc(sizeof(*list));
+	head = list;
+	argc = -1;
+	while (argv[++argc])
+	{
+		list->content = ft_atoi(argv[argc]);
+		if (!argv[argc + 1])
+			break ;
+		list->next = malloc(sizeof(*list));
+		list = list->next;
+	}
+	return (head);
 }
 
 int	main(int argc, char **argv)
@@ -69,7 +88,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		argv = get_quote(argv[0]);
 	parsing(argc, argv);
-	stack_ini(&stack_a, &stack_b, argv);
+	stack_a = stack_test(argc, argv);
 	if (stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
