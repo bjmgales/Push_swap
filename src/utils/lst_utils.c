@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_shit.c                                     :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:41:26 by bgales            #+#    #+#             */
-/*   Updated: 2022/07/30 13:49:01 by bgales           ###   ########.fr       */
+/*   Updated: 2023/04/30 11:58:57 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ int	ft_listsize(t_lst *lst)
 	return (i);
 }
 
-void	print_list(t_lst *lst)
-{
-	t_lst	*tmp;
-
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		printf("%d Element in list : %d. Index = %d\n", tmp->position,
-			tmp->content, tmp->index);
-		tmp = tmp->next;
-	}
-	return ;
-}
-
 int	arg_nbr(char **argv)
 {
 	int	i;
@@ -49,4 +35,16 @@ int	arg_nbr(char **argv)
 	while (argv[i])
 		i++;
 	return (i);
+}
+
+void	free_lst(t_lst *stack)
+{
+	t_lst	*ptr;
+
+	while (stack->next != NULL)
+	{
+		ptr = stack;
+		stack = stack->next;
+		free (ptr);
+	}
 }

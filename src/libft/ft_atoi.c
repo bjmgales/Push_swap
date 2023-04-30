@@ -6,13 +6,13 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:27:38 by bgales            #+#    #+#             */
-/*   Updated: 2022/11/28 17:32:13 by bgales           ###   ########.fr       */
+/*   Updated: 2023/04/30 11:52:04 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	ok_quote(const char *str)
 {

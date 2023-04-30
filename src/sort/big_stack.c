@@ -6,7 +6,7 @@
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:07:30 by bgales            #+#    #+#             */
-/*   Updated: 2022/11/28 16:01:11 by bgales           ###   ########.fr       */
+/*   Updated: 2023/04/30 11:49:12 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	big_stack_sort(t_lst **sa, t_lst **sb, int *tab, int tabSize)
 	if (ft_listsize(*sa) < 500)
 		tmp = ft_listsize(*sa) / 5;
 	else
-		tmp = ft_listsize(*sa) / 11;
+		tmp = ft_listsize(*sa) / 20;
 	while (ft_listsize(*sa) != 0)
 	{
 		big_stack_next(sa, sb, tmp++);

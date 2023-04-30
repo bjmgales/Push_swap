@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgales <bgales@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:53:25 by bgales            #+#    #+#             */
-/*   Updated: 2022/12/03 17:38:57 by bgales           ###   ########.fr       */
+/*   Updated: 2023/04/30 11:58:54 by bgales           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,9 @@ void	print_and_exit(char *str)
 	exit (0);
 }
 
-void	free_lst(t_lst *stack)
-{
-	t_lst	*ptr;
-
-	while (stack->next != NULL)
-	{
-		ptr = stack;
-		stack = stack->next;
-		free (ptr);
-	}
-}
 
 
-t_lst	*stack_test(int argc, char **argv)
+t_lst	*stack_init(int argc, char **argv)
 {
 	t_lst	*head;
 	t_lst	*list;
@@ -52,30 +41,9 @@ t_lst	*stack_test(int argc, char **argv)
 		list->next = malloc(sizeof(*list));
 		list = list->next;
 	}
+	list->next = NULL;
 	return (head);
 }
-
-/*void	stack_ini(t_lst **sa, t_lst **sb, char **argv)
-{
-	int		i;
-	t_lst	*tmp;
-	t_lst	*temp;
-
-	i = 0;
-	temp = NULL;
-	while (argv[i])
-	{
-		tmp = malloc(sizeof(t_lst));
-		tmp->content = ft_atoi(argv[i]);
-		*sa = tmp;
-		*sb = temp;
-		sa = &(tmp->next);
-		i++;
-	}
-	*sa = NULL;
-	*sb = NULL;
-	return ;
-}*/
 
 int	main(int argc, char **argv)
 {
@@ -89,7 +57,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		argv = get_quote(argv[0]);
 	parsing(argc, argv);
-	stack_a = stack_test(argc, argv);
+	stack_a = stack_init(argc, argv);
 	if (stack_a->next == NULL)
 		exit(0);
 	num_parse(&stack_a);
@@ -98,4 +66,3 @@ int	main(int argc, char **argv)
 	sort(&stack_a, &stack_b, sorted);
 	exit (0);
 }
-
